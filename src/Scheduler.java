@@ -21,7 +21,7 @@ public abstract class  Scheduler { //General class representing the cpu schedule
     public  void displayExecutionOrder(){
         System.out.println("Processes' execution order:-");
         for(Process p : processQueue){
-            System.out.println(p.getName() + " ");
+            System.out.print(p.getName() + " ");
         }
         System.out.print("\n");
     }
