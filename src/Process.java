@@ -15,6 +15,9 @@ public class Process {
     public int getBurstTime() {
         return burstTime;
     }
+    public void setPriorityNumber(int priorityNumber) {
+        this.priorityNumber = priorityNumber;
+    }
 
     public int getPriorityNumber() {
         return priorityNumber;

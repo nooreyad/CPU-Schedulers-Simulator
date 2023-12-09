@@ -9,7 +9,7 @@ public class PriorityScheduler extends Scheduler{
         int currentTime = 0;
         while(currentTime != completionTime){
             for(int i = 0; i < processes.size(); i++){
-                if(processes.get(i).getArrivalTime() <= currentTime && !readyQueue.contains(processes.get(i))){
+                if(processes.get(i).getArrivalTime() <= currentTime){
                     readyQueue.add(processes.get(i));
                 }
             }
@@ -19,9 +19,13 @@ public class PriorityScheduler extends Scheduler{
             currProcess.setTurnaroundTime(currProcess.getWaitingTime() + currProcess.getBurstTime());
             processQueue.add(currProcess);
             currentTime +=  currProcess.getBurstTime();
+            //increasePriority();
         }
     }
     public void increasePriority(){ // TODO
-
+        for(Process p : readyQueue){
+            int newPriorityNum = p.getPriorityNumber() - 1;;
+            p.setPriorityNumber(newPriorityNum);
+        }
     }
 }
