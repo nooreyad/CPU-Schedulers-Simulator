@@ -1,11 +1,11 @@
+import java.util.ArrayList;
+
 public class SJF extends Scheduler {
-    @Override
-    public double calculateAverageWaitingTime() {
-        return 0;
-    }
+
 
     @Override
-    public double calculateAverageTurnaroundTime() {
-        return 0;
+    public void setExecutionOrder(ArrayList<Process> processes) {
+
     }
+
 }

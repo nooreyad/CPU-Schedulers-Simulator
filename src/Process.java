@@ -1,16 +1,38 @@
 public class Process {
     private String name;
-
+    private int arrivalTime;
+    private int burstTime;
+    private int priorityNumber;
+    private int waitingTime; //(entrance time of the process - process arrival time) + context switching time if there is any
+    private int turnaroundTime; //process waiting time + process burst time
+    public String getName() {
+        return name;
+    }
     public int getArrivalTime() {
         return arrivalTime;
     }
 
-    private int arrivalTime;
-    private int burstTime;
-    private int priorityNumber;
+    public int getBurstTime() {
+        return burstTime;
+    }
 
-    private int waitingTime;
-    private int turnaroundTime;
+    public int getPriorityNumber() {
+        return priorityNumber;
+    }
+
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+    public void setTurnaroundTime(int turnaroundTime) {
+        this.turnaroundTime = turnaroundTime;
+    }
+    public int getTurnaroundTime() {
+        return turnaroundTime;
+    }
 
     Process(String name, int arrivalTime, int burstTime, int priorityNumber){
         this.name = name;
@@ -19,16 +41,4 @@ public class Process {
         this.priorityNumber = priorityNumber;
     }
 
-    int calculateWaitingTime(){
-        return waitingTime;
-    }
-
-    int calculateTurnaroundTime(){
-        return turnaroundTime;
-    }
-
-   // @Override
-//    public int compareTo(Process p) {
-//        return Integer.compare(arrivalTime, p.arrivalTime);
-//    }
 }
