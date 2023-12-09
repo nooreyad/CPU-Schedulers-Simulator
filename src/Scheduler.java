@@ -19,9 +19,9 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         System.out.println("Average turnaround time: " + avgTurnaroundTime);
     }
     public  void displayExecutionOrder(){
-        System.out.println("Processes' execution order:-");
+        System.out.println("Processes' execution order along with their cpu entrance time:-");
         for(Process p : processQueue){
-            System.out.print(p.getName() + " ");
+            System.out.println(p.getName() + ": " + p.getEntranceTime());
         }
         System.out.print("\n");
     }

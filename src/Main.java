@@ -57,6 +57,13 @@ public class Main {
         processes.add(new Process("P6", 6, 5 , 6));
         processes.add(new Process("P7", 10, 1 , 1));
 
+
+//        processes.add(new Process("P1", 0, 1, 1));
+//        processes.add(new Process("P2", 1, 2, 3));
+//        processes.add(new Process("P3", 1, 2, 1));
+//        processes.add(new Process("P4", 3, 2, 1));
+//        processes.add(new Process("P5", 3, 2, 1));
+
         Scheduler scheduler = new PriorityScheduler();
         scheduler.setExecutionOrder(processes);
         scheduler.displayExecutionOrder();

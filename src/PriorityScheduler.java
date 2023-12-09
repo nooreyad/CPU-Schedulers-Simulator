@@ -16,19 +16,19 @@ public class PriorityScheduler extends Scheduler{
             if(!readyQueue.isEmpty()) {
                 Process currProcess = readyQueue.poll();
                 processes.remove(currProcess);
-                //assert currProcess != null;
-                currProcess.setWaitingTime(currentTime - currProcess.getArrivalTime());
+                currProcess.setEntranceTime(currentTime);
+                currProcess.setWaitingTime(currProcess.getEntranceTime() - currProcess.getArrivalTime());
                 currProcess.setTurnaroundTime(currProcess.getWaitingTime() + currProcess.getBurstTime());
                 processQueue.add(currProcess);
                 currentTime += currProcess.getBurstTime();
+                increasePriority();
             }
             else{
                 return;
             }
-            //increasePriority();
         }
     }
-    public void increasePriority(){ // TODO
+    public void increasePriority(){
         for(Process p : readyQueue){
             int newPriorityNum = p.getPriorityNumber() - 1;;
             p.setPriorityNumber(newPriorityNum);

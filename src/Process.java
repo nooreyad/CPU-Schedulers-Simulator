@@ -5,6 +5,8 @@ public class Process {
     private int priorityNumber;
     private int waitingTime; //(entrance time of the process - process arrival time) + context switching time if there is any
     private int turnaroundTime; //process waiting time + process burst time
+    private int entranceTime;
+
     public String getName() {
         return name;
     }
@@ -35,6 +37,12 @@ public class Process {
     }
     public int getTurnaroundTime() {
         return turnaroundTime;
+    }
+    public void setEntranceTime(int entranceTime) {
+        this.entranceTime = entranceTime;
+    }
+    public int getEntranceTime() {
+        return entranceTime;
     }
 
     Process(String name, int arrivalTime, int burstTime, int priorityNumber){
