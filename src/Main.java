@@ -49,15 +49,19 @@ public class Main {
 //        }
 
         ArrayList<Process> processes = new ArrayList<>();
-        processes. add(new Process("P1", 0, 8 , 3));
+        /*processes. add(new Process("P1", 0, 8 , 3));
         processes .add(new Process("P2", 1, 2 , 4));
         processes.add(new Process("P3", 3, 4 , 4));
         processes.add(new Process("P4", 4, 1 , 5));
         processes.add(new Process("P5", 5, 6 , 2));
         processes.add(new Process("P6", 6, 5 , 6));
-        processes.add(new Process("P7", 10, 1 , 1));
+        processes.add(new Process("P7", 10, 1 , 1));*/
+        processes. add(new Process("P1", 0, 4 , 3));
+        processes .add(new Process("P2", 1, 3 , 4));
+        processes.add(new Process("P3", 2, 2 , 4));
+        processes.add(new Process("P4", 3, 1 , 5));
 
-        Scheduler scheduler = new PriorityScheduler();
+        Scheduler scheduler = new SJF();
         scheduler.setExecutionOrder(processes);
         scheduler.displayExecutionOrder();
         scheduler.displayProcessesWaitingTime();
