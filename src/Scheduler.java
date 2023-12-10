@@ -35,11 +35,13 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         for(Process p : processQueue){
             System.out.println(p.getName() + ": " + p.getWaitingTime());
         }
+        System.out.print("\n");
     }
     public void displayProcessesTurnaroundTime(){
         System.out.println("Turnaround time for each process:-");
         for(Process p : processQueue){
             System.out.println(p.getName() + ": " + p.getTurnaroundTime());
         }
+        System.out.print("\n");
     }
 }
