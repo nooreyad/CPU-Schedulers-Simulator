@@ -61,6 +61,12 @@ public class Main {
         processes.add(new Process("P3", 2, 2 , 4));
         processes.add(new Process("P4", 3, 1 , 5));
 
+//        processes.add(new Process("P1", 2, 1, 1));
+//        processes.add(new Process("P2", 1, 5, 1));
+//        processes.add(new Process("P3", 4, 1, 1));
+//        processes.add(new Process("P4", 0, 6, 1));
+//        processes.add(new Process("P5", 2, 3, 1));
+
         Scheduler scheduler = new SJF();
         scheduler.setExecutionOrder(processes);
         scheduler.displayExecutionOrder();
