@@ -61,12 +61,33 @@ public class Main {
 //        processes.add(new Process("P7", 10, 1 , 1));
 
 
+//        processes. add(new Process("P1", 0, 4 , 3));
+//        processes .add(new Process("P2", 1, 3 , 4));
+//        processes.add(new Process("P3", 2, 2 , 4));
+//        processes.add(new Process("P4", 3, 1 , 5));
+
+
         processes.add(new Process("P1", 0, 17, 4));
         processes.add(new Process("P2", 3, 6, 9));
         processes.add(new Process("P3", 4, 10, 3));
         processes.add(new Process("P4", 29, 4, 8));
 
         Scheduler scheduler = new AGScheduler();
+
+        //Testing Priority
+//        processes.add(new Process("P1", 0, 10, 1));
+//        processes.add(new Process("P2", 1, 2, 3));
+//        processes.add(new Process("P3", 2, 2, 1));
+//        processes.add(new Process("P4", 3, 2, 1));
+
+        //Testting SRTF
+        // processes.add(new Process("P1", 2, 1, 1));
+        // processes.add(new Process("P2", 1, 5, 1));
+        // processes.add(new Process("P3", 4, 1, 1));
+        // processes.add(new Process("P4", 0, 6, 1));
+        // processes.add(new Process("P5", 2, 3, 1));
+
+        // Scheduler scheduler = new SRTF();
         scheduler.setExecutionOrder(processes);
         scheduler.displayExecutionOrder();
         scheduler.displayProcessesWaitingTime();

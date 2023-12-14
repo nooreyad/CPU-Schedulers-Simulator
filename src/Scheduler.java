@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 
-public abstract class  Scheduler { //General class representing the cpu scheduler
-
+//General class representing the cpu scheduler
+public abstract class  Scheduler {
+    //TODO make a data structure containing the original arrangement of the input processes
     ArrayList<Process> processQueue = new ArrayList<>();
     ArrayList<ProcessHistory> processHistories = new ArrayList<>();
     public abstract void setExecutionOrder(ArrayList<Process> processes);
@@ -21,9 +23,9 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         System.out.println("Average turnaround time: " + avgTurnaroundTime);
     }
     public  void displayExecutionOrder(){
-        System.out.println("Processes' execution order along with their cpu entrance time:-");
+        System.out.println("Processes' execution order:-");
         for(Process p : processQueue){
-            System.out.println(p.getName() + ": " + p.getEntranceTime());
+            System.out.print(p.getName() + " ");
         }
         System.out.print("\n");
     }
@@ -33,9 +35,13 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         processQueue.clear();
     }
     public void displayProcessesWaitingTime(){
+        Map<Process, Boolean> visited = new HashMap<>();
         System.out.println("Waiting time for each process:-");
         for(Process p : processQueue){
-            System.out.println(p.getName() + ": " + p.getWaitingTime());
+            if(!visited.containsKey(p) || !visited.get(p)) {
+                System.out.println(p.getName() + ": " + p.getWaitingTime());
+            }
+            visited.put(p, true);
         }
         System.out.print("\n");
     }
@@ -56,9 +62,13 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         System.out.print("\n");
     }
     public void displayProcessesTurnaroundTime(){
+        Map<Process, Boolean> visited = new HashMap<>();
         System.out.println("Turnaround time for each process:-");
         for(Process p : processQueue){
-            System.out.println(p.getName() + ": " + p.getTurnaroundTime());
+            if(!visited.containsKey(p) || !visited.get(p)) {
+                System.out.println(p.getName() + ": " + p.getTurnaroundTime());
+            }
+            visited.put(p, true);
         }
         System.out.print("\n");
     }
