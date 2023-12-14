@@ -29,6 +29,7 @@ public class SJF extends Scheduler {
             }
             if(cnt == n){ //no processes at the current time
                 currentTime++;
+                completionTime++;
             }
             else{
                 Process currentProcess = processes.get(cnt);
