@@ -49,7 +49,7 @@ public class Chart {
         JFreeChart jFreeChart = ChartFactory.createGanttChart("Gantt",
                 "Process", "Time", xyDataset, true, true, true);
         CategoryPlot plot = jFreeChart.getCategoryPlot();
-        plot.getRenderer().setBaseToolTipGenerator( new MyToolTipGenerator("{0}, {1}: ", DateFormat.getTimeInstance(DateFormat.SHORT)));
+        plot.getRenderer().setBaseToolTipGenerator( new MyToolTipGenerator("{0}, {1} ", DateFormat.getTimeInstance(DateFormat.SHORT)));
         return jFreeChart;
     }
 
