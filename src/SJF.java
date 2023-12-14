@@ -11,15 +11,16 @@ public class SJF extends Scheduler {
         for (Process p : processes) {
             mp.put(p,false);
         }
-        int currentTime = 0 , totalProcesses = 0; //initially
+        int minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
+        int completionTime = processes.stream().mapToInt(Process::getBurstTime).sum() + minArrivalTime;
+        int currentTime = minArrivalTime;
 
-        while (true) {
+        int totalProcesses = 0; // initially
+
+        while (currentTime < completionTime && totalProcesses < processes.size()) {
             int cnt = n;
             int mn = Integer.MAX_VALUE;
 
-            if(totalProcesses == processes.size()){
-                break;
-            }
             for(int i = 0 ; i < processes.size();i++) {
                 if ((processes.get(i).getArrivalTime() <= currentTime) && (mp.get(processes.get(i)) == false) && (processes.get(i).getBurstTime() < mn)) {
                     mn = processes.get(i).getBurstTime();
