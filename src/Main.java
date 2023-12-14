@@ -1,3 +1,6 @@
+import GraphicalRepresentation.Chart;
+
+import java.awt.*;
 import java.util.*;
 
 public class Main {
@@ -71,5 +74,11 @@ public class Main {
         scheduler.calculateAverageWaitingTime();
         scheduler.calculateAverageTurnaroundTime();
         //scheduler.displayProcessHistory();
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Chart().display();
+            }
+        });
     }
 }
