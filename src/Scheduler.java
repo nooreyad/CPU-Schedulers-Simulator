@@ -1,9 +1,11 @@
 import java.util.ArrayList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class  Scheduler { //General class representing the cpu scheduler
 
     ArrayList<Process> processQueue = new ArrayList<>();
+    ArrayList<ProcessHistory> processHistories = new ArrayList<>();
     public abstract void setExecutionOrder(ArrayList<Process> processes);
 
     public void  calculateAverageWaitingTime(){
@@ -37,11 +39,37 @@ public abstract class  Scheduler { //General class representing the cpu schedule
         }
         System.out.print("\n");
     }
+
+    public void displayProcessesCompletionTime(){
+        System.out.println("Completion time for each process:-");
+        for(Process p : processQueue){
+            System.out.println(p.getName() + ": " + p.getCompletionTime());
+        }
+        System.out.print("\n");
+    }
+
+    public void displayProcessesBurstTime(){
+        System.out.println("Burst time for each process:-");
+        for(Process p : processQueue){
+            System.out.println(p.getName() + ": " + p.getBurstTime());
+        }
+        System.out.print("\n");
+    }
     public void displayProcessesTurnaroundTime(){
         System.out.println("Turnaround time for each process:-");
         for(Process p : processQueue){
             System.out.println(p.getName() + ": " + p.getTurnaroundTime());
         }
         System.out.print("\n");
+    }
+
+    public void displayProcessHistory(){
+        for (int i = 0; i < processHistories.size(); i++) {
+            System.out.println(processHistories.get(i).getProcess().getName());
+            System.out.println("Start Time: " + processHistories.get(i).getStartTime());
+            System.out.println("End Time: " + processHistories.get(i).getEndTime());
+            System.out.println();
+        }
+
     }
 }

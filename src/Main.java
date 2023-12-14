@@ -70,5 +70,6 @@ public class Main {
         scheduler.displayProcessesTurnaroundTime();
         scheduler.calculateAverageWaitingTime();
         scheduler.calculateAverageTurnaroundTime();
+        //scheduler.displayProcessHistory();
     }
 }

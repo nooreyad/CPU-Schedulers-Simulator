@@ -22,9 +22,6 @@ public class Process {
     public int getArrivalTime() {
         return arrivalTime;
     }
-    public void setBurstTime(int burstTime) {
-        this.burstTime = burstTime;
-    }
     public int getBurstTime() {
         return burstTime;
     }
