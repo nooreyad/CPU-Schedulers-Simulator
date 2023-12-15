@@ -4,7 +4,6 @@ import java.util.Map;
 
 //General class representing the cpu scheduler
 public abstract class  Scheduler {
-    //TODO make a data structure containing the original arrangement of the input processes
     ArrayList<Process> processQueue = new ArrayList<>();
     int completionTime;
     ArrayList<ProcessHistory> processHistories = new ArrayList<>();
@@ -30,26 +29,16 @@ public abstract class  Scheduler {
         double avgTurnaroundTime = (totalTurnaroundTime / processesNum);
         System.out.println("Average turnaround time: " + avgTurnaroundTime);
     }
-    public  void displayExecutionOrder(){
-        System.out.println("Processes' execution order:-");
-        for(Process p : processQueue){
-            System.out.print(p.getName() + " ");
-        }
-        System.out.print("\n");
-    }
     public  void clearExecutionOrder(){
         //needed if there is a main menu and I want to apply another
-        //algorithm on the sam set of processes
+        //algorithm on the same set of processes
         processQueue.clear();
+        processHistories.clear();
     }
     public void displayProcessesWaitingTime(){
-        Map<Process, Boolean> visited = new HashMap<>();
         System.out.println("Waiting time for each process:-");
         for(Process p : processQueue){
-            if(!visited.containsKey(p) || !visited.get(p)) {
-                System.out.println(p.getName() + ": " + p.getWaitingTime());
-            }
-            visited.put(p, true);
+            System.out.println(p.getName() + ": " + p.getWaitingTime());
         }
         System.out.print("\n");
     }
@@ -70,13 +59,9 @@ public abstract class  Scheduler {
         System.out.print("\n");
     }
     public void displayProcessesTurnaroundTime(){
-        Map<Process, Boolean> visited = new HashMap<>();
         System.out.println("Turnaround time for each process:-");
         for(Process p : processQueue){
-            if(!visited.containsKey(p) || !visited.get(p)) {
-                System.out.println(p.getName() + ": " + p.getTurnaroundTime());
-            }
-            visited.put(p, true);
+            System.out.println(p.getName() + ": " + p.getTurnaroundTime());
         }
         System.out.print("\n");
     }

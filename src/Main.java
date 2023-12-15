@@ -68,24 +68,31 @@ public class Main {
 //        scheduler = new AGScheduler(quantum);
 
         //Testing Priority
-//        processes.add(new Process("P1", 0, 10, 1));
-//        processes.add(new Process("P2", 1, 2, 3));
-//        processes.add(new Process("P3", 2, 2, 1));
-//        processes.add(new Process("P4", 3, 2, 1));
+//        processes.add(new Process("P1",new Color(255, 0,0), 0, 10, 1));
+//        processes.add(new Process("P2", new Color(255, 0,0),1, 2, 3));
+//        processes.add(new Process("P3",new Color(255, 0,0), 2, 2, 1));
+//        processes.add(new Process("P4", new Color(255, 0,0),3, 2, 1));
 
         //Testting SRTF
-        // processes.add(new Process("P1", 2, 1, 1));
-        // processes.add(new Process("P2", 1, 5, 1));
-        // processes.add(new Process("P3", 4, 1, 1));
-        // processes.add(new Process("P4", 0, 6, 1));
-        // processes.add(new Process("P5", 2, 3, 1));
+         processes.add(new Process("P1", new Color(255, 0,0),2, 1, 1));
+         processes.add(new Process("P2", new Color(255, 0,0),1, 5, 1));
+         processes.add(new Process("P3", new Color(255, 0,0),4, 1, 1));
+         processes.add(new Process("P4", new Color(255, 0,0),0, 6, 1));
+         processes.add(new Process("P5", new Color(255, 0,0),2, 3, 1));
 
-//        Scheduler scheduler = new SRTF();
+        Scheduler scheduler = new SJF(1);
         scheduler.setExecutionOrder(processes);
-        scheduler.displayExecutionOrder();
+        scheduler.displayProcessHistory();
+        System.out.println("----------------------------------------");
+        System.out.print("\n");
         scheduler.displayProcessesWaitingTime();
+        System.out.println("----------------------------------------");
+        System.out.print("\n");
         scheduler.displayProcessesTurnaroundTime();
+        System.out.println("----------------------------------------");
+        System.out.print("\n");
         scheduler.calculateAverageWaitingTime();
+        System.out.print("\n");
         scheduler.calculateAverageTurnaroundTime();
 
         Chart demo = new Chart("Graphical Representation", tempProcesses,  scheduler.getProcessHistories() );

@@ -15,15 +15,16 @@ public class SJF extends Scheduler {
         for (Process p : processes) {
             mp.put(p,false);
         }
-        int currentTime = 0 , totalProcesses = 0; //initially
+        int minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
+        int completionTime = processes.stream().mapToInt(Process::getBurstTime).sum() + minArrivalTime;
+        int currentTime = minArrivalTime;
 
-        while (true) {
+        int totalProcesses = 0; // initially
+
+        while (currentTime < completionTime && totalProcesses < processes.size()) {
             int cnt = n;
             int mn = Integer.MAX_VALUE;
 
-            if(totalProcesses == processes.size()){
-                break;
-            }
             for(int i = 0 ; i < processes.size();i++) {
                 if ((processes.get(i).getArrivalTime() <= currentTime) && (mp.get(processes.get(i)) == false) && (processes.get(i).getBurstTime() < mn)) {
                     mn = processes.get(i).getBurstTime();
@@ -32,6 +33,7 @@ public class SJF extends Scheduler {
             }
             if(cnt == n){ //no processes at the current time
                 currentTime++;
+                completionTime++;
             }
             else{
                 Process currentProcess = processes.get(cnt);
@@ -43,7 +45,8 @@ public class SJF extends Scheduler {
                 // Set waiting time and turnaround time
                 currentProcess.setWaitingTime(currentTime - currentProcess.getArrivalTime());
                 currentProcess.setTurnaroundTime(currentProcess.getWaitingTime() + currentProcess.getBurstTime());
-
+                ProcessHistory processHistory = new ProcessHistory(currentProcess,currentTime, currentTime + currentProcess.getBurstTime());
+                processHistories.add(processHistory);
                 currentTime += currentProcess.getBurstTime() ;
                 processQueue.add(currentProcess);
                 mp.put(currentProcess, true);
