@@ -92,7 +92,7 @@ public class Main {
 //         processes.add(new Process("P4", new Color(255, 0,0),0, 6, 1));
 //         processes.add(new Process("P5", new Color(255, 0,0),2, 3, 1));
 
-//        scheduler.setExecutionOrder(processes);
+        scheduler.setExecutionOrder(processes);
         scheduler.displayProcessHistory();
         System.out.println("----------------------------------------");
         System.out.print("\n");

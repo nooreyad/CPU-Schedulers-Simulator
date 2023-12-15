@@ -6,7 +6,7 @@ public class PriorityScheduler extends Scheduler{
     @Override
     public void setExecutionOrder(ArrayList<Process> processes) {
         readyQueue = new PriorityQueue<>(new ProcessPriorityComparator());
-        boolean solvedStarvation = false;
+        boolean solvedStarvation;
 
         //get the minimum arrival time for the entered processes
         int minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
@@ -15,6 +15,7 @@ public class PriorityScheduler extends Scheduler{
 
         //switch between processes until all processes are executed
         while(currentTime != completionTime){
+            solvedStarvation = false;
             for(int i = 0; i < processes.size(); i++){
                 //add all the processes that are suitable for entering the ready queue
                 if(processes.get(i).getArrivalTime() <= currentTime && !readyQueue.contains(processes.get(i))){
@@ -45,7 +46,7 @@ public class PriorityScheduler extends Scheduler{
                 currentTime += 1;
                 completionTime += 1;
             }
-            solvedStarvation = false;
+
         }
     }
 
