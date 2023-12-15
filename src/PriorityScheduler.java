@@ -7,10 +7,12 @@ public class PriorityScheduler extends Scheduler{
     public void setExecutionOrder(ArrayList<Process> processes) {
         readyQueue = new PriorityQueue<>(new ProcessPriorityComparator());
         boolean solvedStarvation = false;
+
         //get the minimum arrival time for the entered processes
         int minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
         int completionTime = processes.stream().mapToInt(Process::getBurstTime).sum() + minArrivalTime;
         int currentTime =  minArrivalTime;
+
         //switch between processes until all processes are executed
         while(currentTime != completionTime){
             for(int i = 0; i < processes.size(); i++){
@@ -24,6 +26,7 @@ public class PriorityScheduler extends Scheduler{
                     readyQueue.add(processes.get(i));
                 }
             }
+
             //enter the process to the cpu and calculate its timings
             if(!readyQueue.isEmpty()) {
                 Process currProcess = readyQueue.poll();
@@ -32,9 +35,11 @@ public class PriorityScheduler extends Scheduler{
                 currProcess.setWaitingTime(currProcess.getEntranceTime() - currProcess.getArrivalTime());
                 currProcess.setTurnaroundTime(currProcess.getWaitingTime() + currProcess.getBurstTime());
                 processQueue.add(currProcess);
+                ProcessHistory processHistory = new ProcessHistory(currProcess, currentTime, currProcess.getBurstTime() + currentTime);
+                processHistories.add(processHistory);
                 currentTime += currProcess.getBurstTime();
-
             }
+
             else{
                 //Solving if there is a gap in the cpu without any of the entered processes
                 currentTime += 1;
@@ -43,11 +48,15 @@ public class PriorityScheduler extends Scheduler{
             solvedStarvation = false;
         }
     }
+
     //function used to increase the priority to solve the starvation problem
     public void increasePriority(){
-        for(Process p : readyQueue){
-            int newPriorityNum = p.getPriorityNumber() - 1;;
-            p.setPriorityNumber(newPriorityNum);
+        for(Process p : readyQueue) {
+            if (p.getPriorityNumber() != 0) {
+                int newPriorityNum = p.getPriorityNumber() - 1;
+                ;
+                p.setPriorityNumber(newPriorityNum);
+            }
         }
     }
 }
