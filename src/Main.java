@@ -72,12 +72,12 @@ public class Main {
 //        processes.add(new Process("P3", 2, 2 , 4));
 //        processes.add(new Process("P4", 3, 1 , 5));
 
-        processes.add(new Process("P1",  new Color(255, 0,0),0, 17, 4));
-        processes.add(new Process("P2", new Color(0,255,0),3, 6, 9));
-        processes.add(new Process("P3", new Color(0,0,255),4, 10, 3));
-        processes.add(new Process("P4", new Color(217, 231, 6),29, 4, 8));
-        ArrayList<Process> tempProcesses = new ArrayList<>(processes);
-        Scheduler scheduler = new AGScheduler(quantum);
+//        processes.add(new Process("P1",  new Color(255, 0,0),0, 17, 4));
+//        processes.add(new Process("P2", new Color(0,255,0),3, 6, 9));
+//        processes.add(new Process("P3", new Color(0,0,255),4, 10, 3));
+//        processes.add(new Process("P4", new Color(217, 231, 6),29, 4, 8));
+//        ArrayList<Process> tempProcesses = new ArrayList<>(processes);
+//        Scheduler scheduler = new AGScheduler(quantum);
 
         //Testing Priority
 //        processes.add(new Process("P1",new Color(255, 0,0), 0, 10, 1));
@@ -86,12 +86,13 @@ public class Main {
 //        processes.add(new Process("P4", new Color(255, 0,0),3, 2, 1));
 
         //Testting SRTF
-//         processes.add(new Process("P1", new Color(255, 0,0),2, 1, 1));
-//         processes.add(new Process("P2", new Color(255, 0,0),1, 5, 1));
-//         processes.add(new Process("P3", new Color(255, 0,0),4, 1, 1));
-//         processes.add(new Process("P4", new Color(255, 0,0),0, 6, 1));
-//         processes.add(new Process("P5", new Color(255, 0,0),2, 3, 1));
+         processes.add(new Process("P1", new Color(255, 0,0),2, 1, 1));
+         processes.add(new Process("P2", new Color(255, 0,0),1, 5, 1));
+         processes.add(new Process("P3", new Color(255, 0,0),4, 1, 1));
+         processes.add(new Process("P4", new Color(255, 0,0),0, 6, 1));
+         processes.add(new Process("P5", new Color(255, 0,0),2, 3, 1));
 
+        Scheduler scheduler = new SJF(1);
         scheduler.setExecutionOrder(processes);
         scheduler.displayProcessHistory();
         System.out.println("----------------------------------------");
@@ -105,8 +106,8 @@ public class Main {
         scheduler.calculateAverageWaitingTime();
         System.out.print("\n");
         scheduler.calculateAverageTurnaroundTime();
-        Chart chart = new Chart(tempProcesses, scheduler.getProcessHistories());
-        chart.display();
+//        Chart chart = new Chart(tempProcesses, scheduler.getProcessHistories());
+//        chart.display();
 //        System.out.println(processes.size());
 //        EventQueue.invokeLater(new Runnable() {
 //            @Override

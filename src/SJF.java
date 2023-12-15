@@ -45,7 +45,8 @@ public class SJF extends Scheduler {
                 // Set waiting time and turnaround time
                 currentProcess.setWaitingTime(currentTime - currentProcess.getArrivalTime());
                 currentProcess.setTurnaroundTime(currentProcess.getWaitingTime() + currentProcess.getBurstTime());
-
+                ProcessHistory processHistory = new ProcessHistory(currentProcess,currentTime, currentTime + currentProcess.getBurstTime());
+                processHistories.add(processHistory);
                 currentTime += currentProcess.getBurstTime() ;
                 processQueue.add(currentProcess);
                 mp.put(currentProcess, true);
