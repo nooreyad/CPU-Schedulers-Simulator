@@ -2,7 +2,6 @@ public class ProcessHistory {
     int startTime;
     int endTime;
     Process process;
-
     public ProcessHistory(Process process, int startTime, int endTime)
     {
         this.process = process;

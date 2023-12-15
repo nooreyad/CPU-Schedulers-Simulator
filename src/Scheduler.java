@@ -5,7 +5,6 @@ import java.util.Map;
 //General class representing the cpu scheduler
 public abstract class  Scheduler {
     ArrayList<Process> processQueue = new ArrayList<>();
-    int completionTime;
     ArrayList<ProcessHistory> processHistories = new ArrayList<>();
     public abstract void setExecutionOrder(ArrayList<Process> processes);
 
@@ -42,22 +41,6 @@ public abstract class  Scheduler {
         }
         System.out.print("\n");
     }
-
-    public void displayProcessesCompletionTime(){
-        System.out.println("Completion time for each process:-");
-        for(Process p : processQueue){
-            System.out.println(p.getName() + ": " + p.getCompletionTime());
-        }
-        System.out.print("\n");
-    }
-
-    public void displayProcessesBurstTime(){
-        System.out.println("Burst time for each process:-");
-        for(Process p : processQueue){
-            System.out.println(p.getName() + ": " + p.getBurstTime());
-        }
-        System.out.print("\n");
-    }
     public void displayProcessesTurnaroundTime(){
         System.out.println("Turnaround time for each process:-");
         for(Process p : processQueue){
@@ -67,11 +50,11 @@ public abstract class  Scheduler {
     }
 
     public void displayProcessHistory(){
+        System.out.println("Process Execution Order: ");
         for (int i = 0; i < processHistories.size(); i++) {
-            System.out.println(processHistories.get(i).getProcess().getName());
-            System.out.println("Start Time: " + processHistories.get(i).getStartTime());
-            System.out.println("End Time: " + processHistories.get(i).getEndTime());
-            System.out.println();
+            String name = processHistories.get(i).getProcess().getName();
+            System.out.println(name + " entered the cpu at: " + processHistories.get(i).getStartTime());
+            System.out.println(name + " exited the cpu at: " + processHistories.get(i).getEndTime());
         }
 
     }

@@ -27,8 +27,6 @@ public class Chart extends ApplicationFrame {
     ArrayList<Process> processes;
     JFrame frame;
     JTable table;
-    int minArrivalTime = 0;
-    int completionTime = 0;
     public Chart(String title, ArrayList<Process> processes, ArrayList<ProcessHistory> processHistories) {
         super(title);
         this.processes = processes;
@@ -113,9 +111,6 @@ public class Chart extends ApplicationFrame {
     }
 
     private TaskSeriesCollection createTasks() {
-        minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
-        completionTime = processes.stream().mapToInt(Process::getBurstTime).sum() + minArrivalTime;
-
         TaskSeriesCollection dataset = new TaskSeriesCollection();
         for (int i = 0; i < processes.size(); i++) {
             TaskSeries s1 = new TaskSeries(processes.get(i).getName());

@@ -46,41 +46,6 @@ public class Main {
                 return;
             }
         }
-
-//        ArrayList<Process> processes = new ArrayList<>();
-//        processes. add(new Process("P1", 0, 8 , 3));
-//        processes .add(new Process("P2", 1, 2 , 4));
-//        processes.add(new Process("P3", 3, 4 , 4));
-//        processes.add(new Process("P4", 4, 1 , 5));
-//        processes.add(new Process("P5", 5, 6 , 2));
-//        processes.add(new Process("P6", 6, 5 , 6));
-//        processes.add(new Process("P7", 10, 1 , 1));
-
-
-//        processes. add(new Process("P1", 0, 4 , 3));
-//        processes .add(new Process("P2", 1, 3 , 4));
-//        processes.add(new Process("P3", 2, 2 , 4));
-//        processes.add(new Process("P4", 3, 1 , 5));
-        processes.add(new Process("P1",0, 17, 4));
-        processes.add(new Process("P2",3, 6, 9));
-        processes.add(new Process("P3",4, 10, 3));
-        processes.add(new Process("P4",29, 4, 8));
-//        scheduler = new AGScheduler(quantum);
-
-        //Testing Priority
-//        processes.add(new Process("P1",new Color(255, 0,0), 0, 10, 1));
-//        processes.add(new Process("P2", new Color(255, 0,0),1, 2, 3));
-//        processes.add(new Process("P3",new Color(255, 0,0), 2, 2, 1));
-//        processes.add(new Process("P4", new Color(255, 0,0),3, 2, 1));
-
-        //Testting SRTF
-         processes.add(new Process("P1", new Color(255, 0,0),2, 1, 1));
-         processes.add(new Process("P2", new Color(255, 0,0),1, 5, 1));
-         processes.add(new Process("P3", new Color(255, 0,0),4, 1, 1));
-         processes.add(new Process("P4", new Color(255, 0,0),0, 6, 1));
-         processes.add(new Process("P5", new Color(255, 0,0),2, 3, 1));
-
-        Scheduler scheduler = new SJF(1);
         scheduler.setExecutionOrder(processes);
         scheduler.displayProcessHistory();
         System.out.println("----------------------------------------");

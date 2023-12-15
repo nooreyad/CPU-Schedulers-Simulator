@@ -15,13 +15,11 @@ public class SJF extends Scheduler {
         for (Process p : processes) {
             mp.put(p,false);
         }
-        int minArrivalTime = processes.stream().mapToInt(Process::getArrivalTime).min().orElse(Integer.MAX_VALUE);
-        int completionTime = processes.stream().mapToInt(Process::getBurstTime).sum() + minArrivalTime;
-        int currentTime = minArrivalTime;
+        int currentTime =  0;
 
         int totalProcesses = 0; // initially
 
-        while (currentTime < completionTime && totalProcesses < processes.size()) {
+        while (totalProcesses < processes.size()) {
             int cnt = n;
             int mn = Integer.MAX_VALUE;
 
@@ -33,15 +31,11 @@ public class SJF extends Scheduler {
             }
             if(cnt == n){ //no processes at the current time
                 currentTime++;
-                completionTime++;
             }
             else{
                 Process currentProcess = processes.get(cnt);
+                currentTime += CONTEXT_SWITCH_TIME;
 
-                //if it is not the first entering process,add context switch time
-                if (!processQueue.isEmpty()) {
-                    currentTime += CONTEXT_SWITCH_TIME;
-                }
                 // Set waiting time and turnaround time
                 currentProcess.setWaitingTime(currentTime - currentProcess.getArrivalTime());
                 currentProcess.setTurnaroundTime(currentProcess.getWaitingTime() + currentProcess.getBurstTime());
@@ -51,7 +45,6 @@ public class SJF extends Scheduler {
                 processQueue.add(currentProcess);
                 mp.put(currentProcess, true);
                 totalProcesses++;
-
             }
         }
     }
