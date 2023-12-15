@@ -1,14 +1,22 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Queue;
 
 //General class representing the cpu scheduler
 public abstract class  Scheduler {
     //TODO make a data structure containing the original arrangement of the input processes
     ArrayList<Process> processQueue = new ArrayList<>();
+    int completionTime;
     ArrayList<ProcessHistory> processHistories = new ArrayList<>();
     public abstract void setExecutionOrder(ArrayList<Process> processes);
+
+    public ArrayList<ProcessHistory> getProcessHistories() {
+        return processHistories;
+    }
+
+    public ArrayList<Process> getProcessQueue() {
+        return processQueue;
+    }
 
     public void  calculateAverageWaitingTime(){
         double totalWaitingTime = processQueue.stream().mapToInt(Process::getWaitingTime).sum();

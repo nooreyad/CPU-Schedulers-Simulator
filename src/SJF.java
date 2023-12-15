@@ -1,7 +1,11 @@
 import java.util.*;
 
 public class SJF extends Scheduler {
-    private static final int CONTEXT_SWITCH_TIME = 1;
+
+    private int CONTEXT_SWITCH_TIME;
+    SJF(int contextSwitching){
+        this.CONTEXT_SWITCH_TIME = contextSwitching;
+    }
     @Override
     public void setExecutionOrder(ArrayList<Process> processes) {
         int n = processes.size();

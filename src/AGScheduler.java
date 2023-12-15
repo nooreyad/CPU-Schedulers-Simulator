@@ -5,10 +5,14 @@ public class AGScheduler extends Scheduler{
     Map<Process, Integer> quantumTime = new HashMap<>();
     Map<Process, Integer> burstTimeMp = new HashMap<>();
     Queue<Process> readyQueue = new LinkedList<>();
-    int quantumVal = 4;
+    int quantumVal;
     int startTime;
     int currentTime;
     boolean quantumCase = false;
+
+    AGScheduler(int quantumVal){
+        this.quantumVal = quantumVal;
+    }
 
     @Override
     public void setExecutionOrder(ArrayList<Process> processes)
@@ -117,7 +121,8 @@ public class AGScheduler extends Scheduler{
             }
             else
             {
-                return;
+                currentTime++;
+                completionTime++;
             }
         }
         System.out.println();

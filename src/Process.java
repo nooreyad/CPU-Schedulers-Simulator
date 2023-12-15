@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Process {
     private String name;
     private int arrivalTime;
@@ -7,14 +9,7 @@ public class Process {
     private int turnaroundTime; //process waiting time + process burst time
     private int entranceTime = -1;
     private int completionTime;
-
-    public int getCompletionTime() {
-        return completionTime;
-    }
-
-    public void setCompletionTime(int completionTime) {
-        this.completionTime = completionTime;
-    }
+    private Color color;
 
     public String getName() {
         return name;
@@ -24,6 +19,10 @@ public class Process {
     }
     public int getBurstTime() {
         return burstTime;
+    }
+
+    public void setBurstTime(int burstTime){
+        this.burstTime = burstTime;
     }
     public void setPriorityNumber(int priorityNumber) {
         this.priorityNumber = priorityNumber;
@@ -58,8 +57,9 @@ public class Process {
     public int getCompletionTime() {
         return completionTime;
     }
-    Process(String name, int arrivalTime, int burstTime, int priorityNumber){
+    Process(String name,Color color, int arrivalTime, int burstTime, int priorityNumber){
         this.name = name;
+        this.color = color;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priorityNumber = priorityNumber;
