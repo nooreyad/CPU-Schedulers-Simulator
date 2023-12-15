@@ -2,6 +2,7 @@ import java.awt.*;
 
 public class Process {
     private String name;
+    private int PID;
     private int arrivalTime;
     private int burstTime;
     private int priorityNumber;
@@ -9,8 +10,6 @@ public class Process {
     private int turnaroundTime; //process waiting time + process burst time
     private int entranceTime = -1;
     private int completionTime;
-    private Color color;
-
     public String getName() {
         return name;
     }
@@ -57,12 +56,18 @@ public class Process {
     public int getCompletionTime() {
         return completionTime;
     }
-    Process(String name,Color color, int arrivalTime, int burstTime, int priorityNumber){
+    Process(String name, int arrivalTime, int burstTime, int priorityNumber){
         this.name = name;
-        this.color = color;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priorityNumber = priorityNumber;
     }
 
+    public int getPID() {
+        return PID;
+    }
+
+    public void setPID(int PID) {
+        this.PID = PID;
+    }
 }
