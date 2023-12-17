@@ -2,6 +2,9 @@ import java.util.*;
 
 public class PriorityScheduler extends Scheduler{
     PriorityQueue<Process> readyQueue = new PriorityQueue<>(new ProcessPriorityComparator());
+    PriorityScheduler(ArrayList<Process> processes){
+        super(processes);
+    }
 
     @Override
     public void setExecutionOrder(ArrayList<Process> processes) {

@@ -3,8 +3,11 @@ import java.util.Queue;
 
 public abstract class  Scheduler { //General class representing the cpu scheduler
 
-    ArrayList<Process> processQueue = new ArrayList<>();
+    ArrayList<Process> processQueue;
     public abstract void setExecutionOrder(ArrayList<Process> processes);
+    Scheduler(ArrayList<Process> processes){
+        this.processQueue = processes;
+    }
 
     public void  calculateAverageWaitingTime(){
         double totalWaitingTime = processQueue.stream().mapToInt(Process::getWaitingTime).sum();

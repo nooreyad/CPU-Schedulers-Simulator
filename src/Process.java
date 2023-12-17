@@ -44,6 +44,9 @@ public class Process {
     public int getEntranceTime() {
         return entranceTime;
     }
+    public void setBurstTime(int val){
+        this.burstTime = val;
+    }
 
     Process(String name, int arrivalTime, int burstTime, int priorityNumber){
         this.name = name;
